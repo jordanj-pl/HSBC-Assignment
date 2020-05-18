@@ -17,6 +17,8 @@ protocol ProfileOutputProtocol: class {
 
 	func backgroundActivityStarted() -> Void
 	func backgroundActivityEnded() -> Void
+
+	func didEncounterError() -> Void
 }
 
 class ProfileInteractor: ProfileProviderProtocol {
@@ -37,6 +39,17 @@ class ProfileInteractor: ProfileProviderProtocol {
 		self.serverAPI.retrieveProfile(Constants.profileURL) { [unowned self] result in
 
 			self.output?.backgroundActivityEnded()
+
+			switch result {
+				case .success(let profile):
+					print(profile)
+				break
+
+				case .failure(let error):
+					print(error)
+					self.output?.didEncounterError()
+				break
+			}
 		}
 
 	}

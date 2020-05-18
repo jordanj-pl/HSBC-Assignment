@@ -32,6 +32,10 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 
 	//MARK: - ProfileOutputProtocol
 
+	func didEncounterError() {
+
+	}
+
 	func backgroundActivityStarted() {
 
 	}

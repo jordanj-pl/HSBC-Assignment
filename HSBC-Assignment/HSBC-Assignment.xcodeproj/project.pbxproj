@@ -69,6 +69,7 @@
 		170E71612473494F0035E4B8 /* LanguageEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageEntity.swift; sourceTree = "<group>"; };
 		170E716324734B140035E4B8 /* TechnilogyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnilogyEntity.swift; sourceTree = "<group>"; };
 		170E716524734B4A0035E4B8 /* CertificateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateEntity.swift; sourceTree = "<group>"; };
+		170E7167247353AC0035E4B8 /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +167,7 @@
 				170E71612473494F0035E4B8 /* LanguageEntity.swift */,
 				170E716324734B140035E4B8 /* TechnilogyEntity.swift */,
 				170E716524734B4A0035E4B8 /* CertificateEntity.swift */,
+				170E7167247353AC0035E4B8 /* example.json */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

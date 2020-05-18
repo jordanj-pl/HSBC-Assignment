@@ -30,11 +30,14 @@ class MainRouter: RouterProtocol, MainRouterProtocol {
 
 	var navController: UINavigationController!
 	let apiClient = APIClient()
+	var childRouter: ChildRouterProtocol?
 
 	//MARK: - RouterProtocol
 
 	func mainView() -> UIViewController {
-		return UIViewController()
+		let profileRouter = ProfileRouter(parentRouter: self)
+		childRouter = profileRouter
+		return profileRouter.mainView()
 	}
 
 	func showMainView() {

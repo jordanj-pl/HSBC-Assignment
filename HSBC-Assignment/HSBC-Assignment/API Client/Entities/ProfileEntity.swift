@@ -16,7 +16,7 @@ struct ProfileEntity: Decodable {
 
 	var phoneNumber: String
 	var email: String
-	var website: String
+	var website: URL?
 
 	var summary: String
 

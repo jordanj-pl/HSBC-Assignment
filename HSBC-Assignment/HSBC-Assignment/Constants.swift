@@ -10,6 +10,6 @@ import Foundation
 
 struct Constants {
 
-	static let profileURL = URL(string: "https://skyisthelimit.aero/profile.json")!
+	static let profileURL = URL(string: "https://skyisthelimit.aero/others/jordanjasinski.json")!
 
 }
