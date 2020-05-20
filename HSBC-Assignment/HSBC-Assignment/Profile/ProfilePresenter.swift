@@ -37,8 +37,8 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 
 		view?.setPhone(info.phone)
 		view?.setEmail(info.email)
-		if let www = info.www {
-			view?.setWWW(www.absoluteString)
+		if let www = info.www?.host {
+			view?.setWWW(www)
 		} else {
 			//TODO: hide WWW field
 		}
