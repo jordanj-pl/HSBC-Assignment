@@ -12,6 +12,11 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	var eventHandler: ProfileEventHandlerProtocol?
 
+	@IBOutlet var nameLabel: UILabel!
+	@IBOutlet var emailLabel: UILabel!
+	@IBOutlet var phoneLabel: UILabel!
+	@IBOutlet var wwwLabel: UILabel!
+
 	//MARK: View life cycle
 
 	override func viewDidLoad() {
@@ -19,5 +24,21 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 	}
 
 	//MARK: - ProfileViewProtocol
+
+	func setName(_ name: String) {
+		nameLabel.text = name
+	}
+
+	func setEmail(_ email: String) {
+		emailLabel.text = email
+	}
+
+	func setPhone(_ phone: String) {
+		phoneLabel.text = phone
+	}
+
+	func setWWW(_ www: String) {
+		wwwLabel.text = www
+	}
 
 }
