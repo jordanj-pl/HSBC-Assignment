@@ -12,6 +12,7 @@ protocol ProfileEventHandlerProtocol: class {
 
 	func didLoad() -> Void
 
+	func didTapSummary() -> Void
 }
 
 protocol ProfileViewProtocol: class {
@@ -23,6 +24,9 @@ protocol ProfileViewProtocol: class {
 	func setEmail(_ email: String) -> Void
 	func setPhone(_ phone: String) -> Void
 	func setWWW(_ www: String) -> Void
+
+	func setSummary(_ summary: String) -> Void
+	func setSummary(expanded: Bool)
 }
 
 class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
@@ -30,6 +34,10 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 	var provider: ProfileProviderProtocol?
 	unowned var view: ProfileViewProtocol?
 	unowned var router: ProfileRouter?
+
+	//MARK: view state
+
+	var summaryExpanded = false
 
 	func setBasicInfo(info: BasicInfo) {
 		if let middleName = info.middleName {
@@ -54,6 +62,11 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 		provider?.prepareProfile()
 	}
 
+	func didTapSummary() {
+		summaryExpanded = !summaryExpanded
+		view?.setSummary(expanded: summaryExpanded)
+	}
+
 	//MARK: - ProfileOutputProtocol
 
 	func didPrepareProfile() {
@@ -63,6 +76,12 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 				DispatchQueue.main.async {
 					self.setBasicInfo(info: basicInfo)
 				}
+
+				let summary = try provider.getSummary()
+				DispatchQueue.main.async {
+					self.view?.setSummary(summary)
+				}
+
 			}
 		} catch ProfileError.empty {
 			//TODO: handle error

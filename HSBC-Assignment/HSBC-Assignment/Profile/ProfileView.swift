@@ -17,14 +17,23 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 	@IBOutlet var phoneLabel: UILabel!
 	@IBOutlet var wwwLabel: UILabel!
 
+	@IBOutlet var summaryLabel: UILabel!
+
 	let activityIndicator = ActivityIndicator()
 
 	//MARK: View life cycle
 
 	override func viewDidLoad() {
+		navigationController?.setNavigationBarHidden(true, animated: false)
 		eventHandler?.didLoad()
 
 		activityIndicator.backgroundColor = UIColor(white: 0.0, alpha: 0.6)
+	}
+
+	//MARK: - UI Interactions
+
+	@IBAction func didTapSummary(_ gr: UITapGestureRecognizer) {
+		eventHandler?.didTapSummary()
 	}
 
 	//MARK: - ProfileViewProtocol
@@ -43,6 +52,23 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	func setWWW(_ www: String) {
 		wwwLabel.text = www
+	}
+
+	func setSummary(_ summary: String) {
+		summaryLabel.text = summary
+	}
+
+	func setSummary(expanded: Bool) {
+		if expanded {
+			summaryLabel.numberOfLines = 0
+			summaryLabel.lineBreakMode = .byWordWrapping
+		} else {
+			summaryLabel.numberOfLines = 2
+			summaryLabel.lineBreakMode = .byTruncatingTail
+		}
+		UIView.animate(withDuration: 0.5) {
+			self.view.layoutIfNeeded()
+		}
 	}
 
 	func showActivityIndicator() {

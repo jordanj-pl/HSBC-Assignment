@@ -26,6 +26,7 @@ protocol ProfileProviderProtocol: class {
 	func prepareProfile() -> Void
 
 	func getBasicInfo() throws -> BasicInfo
+	func getSummary() throws -> String
 }
 
 protocol ProfileOutputProtocol: class {
@@ -85,6 +86,14 @@ class ProfileInteractor: ProfileProviderProtocol {
 			phone: profile.phoneNumber,
 			www: profile.website
 		)
+	}
+
+	func getSummary() throws -> String {
+		guard let profile = currentProfile else {
+			throw ProfileError.empty
+		}
+
+		return profile.summary
 	}
 
 }

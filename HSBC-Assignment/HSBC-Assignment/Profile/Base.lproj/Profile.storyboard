@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -117,9 +117,24 @@
                                                     <constraint firstItem="5wl-Gj-lO9" firstAttribute="centerY" secondItem="Yjh-xy-aGe" secondAttribute="centerY" id="zaU-DV-yjN"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxH-J9-s6P">
+                                                <rect key="frame" x="20" y="240" width="374" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Vy7-sL-TQ1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="3EU-GO-8ID" appends="YES" id="jo2-F1-mZe"/>
+                                                </connections>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="VxH-J9-s6P" firstAttribute="top" secondItem="7lq-dH-eMU" secondAttribute="bottom" constant="20" id="Gzk-eL-XoX"/>
+                                            <constraint firstItem="VxH-J9-s6P" firstAttribute="leading" secondItem="7lq-dH-eMU" secondAttribute="leading" id="Kgv-Zf-OMq"/>
+                                            <constraint firstItem="VxH-J9-s6P" firstAttribute="trailing" secondItem="7lq-dH-eMU" secondAttribute="trailing" id="MSd-bw-fpo"/>
                                             <constraint firstItem="7lq-dH-eMU" firstAttribute="leading" secondItem="c3D-bv-zOe" secondAttribute="leading" constant="20" id="gzj-WQ-GnY"/>
                                             <constraint firstAttribute="trailing" secondItem="7lq-dH-eMU" secondAttribute="trailing" constant="20" id="kO3-a5-djp"/>
                                             <constraint firstItem="7lq-dH-eMU" firstAttribute="top" secondItem="c3D-bv-zOe" secondAttribute="top" constant="20" id="rDc-ku-dbH"/>
@@ -149,10 +164,16 @@
                         <outlet property="emailLabel" destination="QRN-8q-O0I" id="Aa8-RX-zfO"/>
                         <outlet property="nameLabel" destination="Ktd-XR-tBJ" id="XA0-zE-sms"/>
                         <outlet property="phoneLabel" destination="ZzL-cI-76v" id="82C-Vv-3dV"/>
+                        <outlet property="summaryLabel" destination="VxH-J9-s6P" id="CTN-Dv-tKm"/>
                         <outlet property="wwwLabel" destination="5wl-Gj-lO9" id="IAd-Y2-KWt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3EU-GO-8ID">
+                    <connections>
+                        <action selector="didTapSummary:" destination="BYZ-38-t0r" id="Bso-sW-zm5"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="127.53623188405798" y="87.723214285714278"/>
         </scene>
