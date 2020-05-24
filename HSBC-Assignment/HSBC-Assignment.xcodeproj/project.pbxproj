@@ -25,6 +25,7 @@
 		170E71622473494F0035E4B8 /* LanguageEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E71612473494F0035E4B8 /* LanguageEntity.swift */; };
 		170E716424734B140035E4B8 /* TechnilogyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E716324734B140035E4B8 /* TechnilogyEntity.swift */; };
 		170E716624734B4A0035E4B8 /* CertificateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E716524734B4A0035E4B8 /* CertificateEntity.swift */; };
+		173CE8382475F60E00C6F964 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173CE8372475F60E00C6F964 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		170E716324734B140035E4B8 /* TechnilogyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TechnilogyEntity.swift; sourceTree = "<group>"; };
 		170E716524734B4A0035E4B8 /* CertificateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificateEntity.swift; sourceTree = "<group>"; };
 		170E7167247353AC0035E4B8 /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		173CE8372475F60E00C6F964 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		170E711B247333D70035E4B8 /* HSBC-Assignment */ = {
 			isa = PBXGroup;
 			children = (
+				173CE8362475F5E900C6F964 /* UI Elements */,
 				170E7150247335D50035E4B8 /* Profile */,
 				170E714E247335570035E4B8 /* API Client */,
 				170E711C247333D70035E4B8 /* AppDelegate.swift */,
@@ -182,6 +185,14 @@
 				170E7122247333D70035E4B8 /* Profile.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		173CE8362475F5E900C6F964 /* UI Elements */ = {
+			isa = PBXGroup;
+			children = (
+				173CE8372475F60E00C6F964 /* ActivityIndicator.swift */,
+			);
+			path = "UI Elements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +330,7 @@
 				170E716424734B140035E4B8 /* TechnilogyEntity.swift in Sources */,
 				170E71622473494F0035E4B8 /* LanguageEntity.swift in Sources */,
 				170E715A247339E60035E4B8 /* ProfileRouter.swift in Sources */,
+				173CE8382475F60E00C6F964 /* ActivityIndicator.swift in Sources */,
 				170E7152247335ED0035E4B8 /* ProfileView.swift in Sources */,
 				170E715E247347E50035E4B8 /* ProfileEntity.swift in Sources */,
 				170E711D247333D70035E4B8 /* AppDelegate.swift in Sources */,

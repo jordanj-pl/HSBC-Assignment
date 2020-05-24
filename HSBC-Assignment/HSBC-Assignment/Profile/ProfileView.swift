@@ -17,10 +17,14 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 	@IBOutlet var phoneLabel: UILabel!
 	@IBOutlet var wwwLabel: UILabel!
 
+	let activityIndicator = ActivityIndicator()
+
 	//MARK: View life cycle
 
 	override func viewDidLoad() {
 		eventHandler?.didLoad()
+
+		activityIndicator.backgroundColor = UIColor(white: 0.0, alpha: 0.6)
 	}
 
 	//MARK: - ProfileViewProtocol
@@ -39,6 +43,14 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	func setWWW(_ www: String) {
 		wwwLabel.text = www
+	}
+
+	func showActivityIndicator() {
+		activityIndicator.show(inView: self.view)
+	}
+
+	func hideActivityIndicator() {
+		activityIndicator.hide()
 	}
 
 }

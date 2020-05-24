@@ -16,6 +16,9 @@ protocol ProfileEventHandlerProtocol: class {
 
 protocol ProfileViewProtocol: class {
 
+	func showActivityIndicator() -> Void
+	func hideActivityIndicator() -> Void
+
 	func setName(_ name: String) -> Void
 	func setEmail(_ email: String) -> Void
 	func setPhone(_ phone: String) -> Void
@@ -73,11 +76,15 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 	}
 
 	func backgroundActivityStarted() {
-
+		DispatchQueue.main.async {
+			self.view?.showActivityIndicator()
+		}
 	}
 
 	func backgroundActivityEnded() {
-
+		DispatchQueue.main.async {
+			self.view?.hideActivityIndicator()
+		}
 	}
 
 }

@@ -73,7 +73,7 @@ class APIClient: NSObject, APICLientProtocol, URLSessionDelegate {
 
 		}.resume()
 
-		result(.failure(NSError(domain: "server.api.missingimplementation", code: 0, userInfo: nil)))
+		//result(.failure(NSError(domain: "server.api.missingimplementation", code: 0, userInfo: nil)))
 	}
 
 	//MARK: - URLSessionDelegate
