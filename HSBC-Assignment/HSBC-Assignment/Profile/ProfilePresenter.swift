@@ -20,6 +20,12 @@ protocol ProfileEventHandlerProtocol: class {
 	func didTapSummary() -> Void
 }
 
+enum SubviewPosition {
+	case first;
+	case middle;
+	case last;
+}
+
 protocol ProfileViewProtocol: class {
 
 	func showActivityIndicator() -> Void
@@ -32,6 +38,7 @@ protocol ProfileViewProtocol: class {
 
 	func setSummary(_ summary: String) -> Void
 	func setSummary(expanded: Bool)
+	func addExperience(companyName: String, position: String, period: String, summary: String, viewPosition: SubviewPosition) -> Void
 }
 
 class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
@@ -44,7 +51,7 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 
 	var summaryExpanded = false
 
-	func setBasicInfo(info: BasicInfo) {
+	private func setBasicInfo(info: BasicInfo) {
 		if let middleName = info.middleName {
 			view?.setName("\(info.firstName) \(middleName) \(info.lastName)")
 		} else {
@@ -59,6 +66,37 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 			//TODO: hide WWW field
 		}
 
+	}
+
+	private func setExperience(_ experiences: [ExperienceInfo]) {
+
+		let lastIndex = experiences.count-1
+
+		for i in 0...lastIndex {
+			let experience = experiences[i]
+
+			var pos: SubviewPosition = .middle
+
+			if i == 0 {
+				pos = .first
+			} else if i == lastIndex {
+				pos = .last
+			}
+
+			let df = DateFormatter()
+			df.dateStyle = .medium
+			df.timeStyle = .none
+
+			var period = df.string(from: experience.startDate)
+
+			if let endDate = experience.endDate {
+				period = "\(period) - " + df.string(from: endDate)
+			} else {
+				period = "\(period) - " + NSLocalizedString("still working", comment: "still working, date, professional experience")
+			}
+
+			view?.addExperience(companyName: experience.companyName, position: experience.position, period: period, summary: experience.summary, viewPosition: pos)
+		}
 	}
 
 	//MARK: - ProfileEventHandlerProtocol
@@ -129,6 +167,11 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 				let summary = try provider.getSummary()
 				DispatchQueue.main.async {
 					self.view?.setSummary(summary)
+				}
+
+				let experiences = try provider.getExperience()
+				DispatchQueue.main.async {
+					self.setExperience(experiences)
 				}
 
 			}

@@ -12,12 +12,16 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	var eventHandler: ProfileEventHandlerProtocol?
 
+	@IBOutlet var basicInfoView: UIView!
 	@IBOutlet var nameLabel: UILabel!
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var phoneLabel: UILabel!
 	@IBOutlet var wwwLabel: UILabel!
 
 	@IBOutlet var summaryLabel: UILabel!
+
+	@IBOutlet var experienceView: UIView!
+	@IBOutlet var experienceViewHeight: NSLayoutConstraint!
 
 	let activityIndicator = ActivityIndicator()
 
@@ -80,6 +84,42 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 		}
 		UIView.animate(withDuration: 0.5) {
 			self.view.layoutIfNeeded()
+		}
+	}
+
+	//TODO: consider if this is the most optimal way to manage constraints. UITableView may be a solution but it also brings other problems and does not seem to be necessary if volume of data to be shown is really small.
+	func addExperience(companyName: String, position: String, period: String, summary: String, viewPosition: SubviewPosition = .middle) {
+		let ev = ExperienceView.view()
+		ev.companyNameLabel.text = companyName
+		ev.positionLabel.text = position
+		ev.datesLabel.text = period
+		ev.positionSummaryLabel.text = summary
+
+		if viewPosition == .first {
+			experienceView.addSubview(ev)
+			ev.translatesAutoresizingMaskIntoConstraints = false
+
+			ev.topAnchor.constraint(equalTo: experienceView.topAnchor, constant: 8.0).isActive = true
+		} else {
+			var previousView: UIView = experienceView
+
+			for v in experienceView.subviews {
+				if v is ExperienceView {
+					previousView = v
+				}
+			}
+
+			experienceView.addSubview(ev)
+			ev.translatesAutoresizingMaskIntoConstraints = false
+
+			ev.topAnchor.constraint(equalTo: previousView.bottomAnchor, constant: 8.0).isActive = true
+		}
+
+		ev.leadingAnchor.constraint(equalTo: experienceView.leadingAnchor).isActive = true
+		ev.trailingAnchor.constraint(equalTo: experienceView.trailingAnchor).isActive = true
+
+		if viewPosition == .last {
+			ev.bottomAnchor.constraint(equalTo: experienceView.bottomAnchor, constant: 8.0).isActive = true
 		}
 	}
 

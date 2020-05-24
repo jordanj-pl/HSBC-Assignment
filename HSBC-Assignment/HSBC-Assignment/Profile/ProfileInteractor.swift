@@ -17,6 +17,14 @@ struct BasicInfo {
 	let www: URL?
 }
 
+struct ExperienceInfo {
+    let companyName: String
+    let position: String
+	let startDate: Date
+	let endDate: Date?
+	let summary: String
+}
+
 enum ProfileError: Error {
 	case empty
 }
@@ -27,6 +35,7 @@ protocol ProfileProviderProtocol: class {
 
 	func getBasicInfo() throws -> BasicInfo
 	func getSummary() throws -> String
+	func getExperience() throws -> [ExperienceInfo]
 }
 
 protocol ProfileOutputProtocol: class {
@@ -96,4 +105,18 @@ class ProfileInteractor: ProfileProviderProtocol {
 		return profile.summary
 	}
 
+	func getExperience() throws -> [ExperienceInfo] {
+		var experiences: [ExperienceInfo] = []
+
+		guard let professionalExperience = currentProfile?.professionalExperience else {
+			throw ProfileError.empty
+		}
+
+		for pe in professionalExperience {
+			let ei = ExperienceInfo(companyName: pe.companyName, position: pe.position, startDate: pe.dateStarted, endDate: pe.dateEnded, summary: pe.summary)
+			experiences.append(ei)
+		}
+
+		return experiences
+	}
 }

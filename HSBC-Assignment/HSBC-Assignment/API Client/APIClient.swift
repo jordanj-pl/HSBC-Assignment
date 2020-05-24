@@ -59,6 +59,7 @@ class APIClient: NSObject, APICLientProtocol, URLSessionDelegate {
 				}
 
 				let jsonDecoder = JSONDecoder.init()
+				jsonDecoder.dateDecodingStrategy = .iso8601
 
 				do {
 					let model = try jsonDecoder.decode(ProfileEntity.self, from: data)
