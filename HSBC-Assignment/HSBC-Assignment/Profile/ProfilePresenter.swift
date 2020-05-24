@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import MessageUI
 
 protocol ProfileEventHandlerProtocol: class {
 
 	func didLoad() -> Void
+
+	func didTapMobileNumber() -> Void
+	func didTapEmailAddress() -> Void
+	func didTapWebAddress() -> Void
 
 	func didTapSummary() -> Void
 }
@@ -65,6 +70,50 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 	func didTapSummary() {
 		summaryExpanded = !summaryExpanded
 		view?.setSummary(expanded: summaryExpanded)
+	}
+
+	func didTapEmailAddress() {
+		do {
+			if let provider = provider {
+				let basicInfo = try provider.getBasicInfo()
+				if MFMailComposeViewController.canSendMail() {
+					router?.shownMailComposer(withRecipient: basicInfo.email)
+				} else {
+
+				}
+			}
+		} catch {
+			//TODO: handle error
+		}
+	}
+
+	func didTapMobileNumber() {
+		do {
+			if let provider = provider {
+				let basicInfo = try provider.getBasicInfo()
+
+				if let phoneURL = URL(string: "telprompt://\(basicInfo.phone)") {
+					router?.openURL(phoneURL)
+				}
+			}
+		} catch {
+			//TODO: handle error
+		}
+	}
+
+	func didTapWebAddress() {
+		do {
+			if let provider = provider {
+				let basicInfo = try provider.getBasicInfo()
+				if let www = basicInfo.www {
+					DispatchQueue.main.async {
+						self.router?.openURL(www)
+					}
+				}
+			}
+		} catch {
+			//TODO: handle error
+		}
 	}
 
 	//MARK: - ProfileOutputProtocol

@@ -32,6 +32,18 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	//MARK: - UI Interactions
 
+	@IBAction func didTapEmail() {
+		eventHandler?.didTapEmailAddress()
+	}
+
+	@IBAction func didTapPhone() {
+		eventHandler?.didTapMobileNumber()
+	}
+
+	@IBAction func didTapWWW() {
+		eventHandler?.didTapWebAddress()
+	}
+
 	@IBAction func didTapSummary(_ gr: UITapGestureRecognizer) {
 		eventHandler?.didTapSummary()
 	}

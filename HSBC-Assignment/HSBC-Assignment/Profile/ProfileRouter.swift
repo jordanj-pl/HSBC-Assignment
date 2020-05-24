@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import MessageUI
 
 protocol ProfileRouterProtocol: class {
 
+	func openURL(_ url: URL) -> Void
+	func shownMailComposer(withRecipient recipient: String) -> Void
 }
 
-class ProfileRouter: ChildRouterProtocol, ProfileRouterProtocol {
+class ProfileRouter: NSObject, RouterProtocol, ChildRouterProtocol, ProfileRouterProtocol, MFMailComposeViewControllerDelegate {
 
-	unowned var parentRouter: MainRouterProtocol
+	unowned var parentRouter: RouterProtocol
 
 	//MARK: - ChildRouterProtocol
 
@@ -23,11 +26,23 @@ class ProfileRouter: ChildRouterProtocol, ProfileRouterProtocol {
 			assertionFailure("Expecting router that conforms to MainRouterProtocol")
 		}
 
-		self.parentRouter = parentRouter as! MainRouterProtocol
+		self.parentRouter = parentRouter
 	}
 
 	//MARK: - ProfileRouterProtocol
 
+	func openURL(_ url: URL) {
+		UIApplication.shared.open(url)
+	}
+
+	func shownMailComposer(withRecipient recipient: String) {
+		let mc = MFMailComposeViewController()
+		mc.setToRecipients([recipient])
+		mc.mailComposeDelegate = self
+
+		parentRouter.present(viewController: mc)
+
+	}
 
 	//MARK: - RouterProtocol
 
@@ -40,6 +55,8 @@ class ProfileRouter: ChildRouterProtocol, ProfileRouterProtocol {
 
 		view.eventHandler = presenter
 
+		let parentRouter = self.parentRouter as! MainRouterProtocol
+
 		let interactor = ProfileInteractor(apiClient: parentRouter.serverAPI())
 		interactor.output = presenter
 
@@ -50,6 +67,24 @@ class ProfileRouter: ChildRouterProtocol, ProfileRouterProtocol {
 
 	func showMainView() {
 
+	}
+
+	func push(viewController: UIViewController) {
+		parentRouter.push(viewController: viewController)
+	}
+
+	func present(viewController: UIViewController) {
+		parentRouter.present(viewController: viewController)
+	}
+
+	func popViewController() {
+		parentRouter.popViewController()
+	}
+
+	//MARK: - MFMailComposeViewControllerDelegate
+
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		parentRouter.popViewController()
 	}
 
 }

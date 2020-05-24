@@ -47,7 +47,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="Uck-eo-1JB"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRN-8q-O0I">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRN-8q-O0I">
                                                         <rect key="frame" x="186" y="49.5" width="180" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="k8C-cd-C4m"/>
@@ -55,6 +55,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="bwq-yX-yef" appends="YES" id="Vg7-27-yg3"/>
+                                                        </connections>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yhU-07-hIh">
                                                         <rect key="frame" x="148" y="79.5" width="30" height="19.5"/>
@@ -63,7 +66,7 @@
                                                             <constraint firstAttribute="width" constant="30" id="ggI-AQ-zv9"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZzL-cI-76v">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mobile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZzL-cI-76v">
                                                         <rect key="frame" x="186" y="80.5" width="180" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="hVT-Gz-Ke3"/>
@@ -71,8 +74,11 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="ydO-Qe-PpV" appends="YES" id="SJl-kb-OR0"/>
+                                                        </connections>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wl-Gj-lO9">
+                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="www" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wl-Gj-lO9">
                                                         <rect key="frame" x="186" y="111.5" width="180" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="18" id="5Iz-5G-Gdu"/>
@@ -80,6 +86,9 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <connections>
+                                                            <outletCollection property="gestureRecognizers" destination="jWM-bG-Qg1" appends="YES" id="dRN-QX-QYv"/>
+                                                        </connections>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yjh-xy-aGe">
                                                         <rect key="frame" x="148" y="111" width="30" height="19.5"/>
@@ -172,6 +181,21 @@
                 <tapGestureRecognizer id="3EU-GO-8ID">
                     <connections>
                         <action selector="didTapSummary:" destination="BYZ-38-t0r" id="Bso-sW-zm5"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bwq-yX-yef">
+                    <connections>
+                        <action selector="didTapEmail" destination="BYZ-38-t0r" id="gZm-NV-nUq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ydO-Qe-PpV">
+                    <connections>
+                        <action selector="didTapPhone" destination="BYZ-38-t0r" id="8Ed-y3-PYb"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="jWM-bG-Qg1">
+                    <connections>
+                        <action selector="didTapWWW" destination="BYZ-38-t0r" id="aaO-bV-YvO"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
