@@ -7,13 +7,12 @@
 //
 
 import Foundation
-
-typealias FailureHandler = (_ error: Error) -> Void
-typealias ProfileSuccessHandler = (_ documents: ProfileEntity) -> Void
+import UIKit
 
 protocol APICLientProtocol: class {
 
 	func retrieveProfile(_ url: URL, result: @escaping (Result<ProfileEntity, NSError>) -> Void ) -> Void
+	func retrieveImage(_ url: URL, result: @escaping (Result<UIImage, NSError>) -> Void ) -> Void
 }
 
 class APIClient: NSObject, APICLientProtocol, URLSessionDelegate {
@@ -53,6 +52,7 @@ class APIClient: NSObject, APICLientProtocol, URLSessionDelegate {
 
 			if response is HTTPURLResponse {
 				let response: HTTPURLResponse = response as! HTTPURLResponse
+				//TODO: consider if support for other success response codes is needed (e.g. 203)
 				if response.statusCode != 200 {
 					result(.failure(NSError(domain: "server.profile.response.unexpectedHttpStatus", code: 0, userInfo: nil)))
 					return
@@ -75,6 +75,61 @@ class APIClient: NSObject, APICLientProtocol, URLSessionDelegate {
 		}.resume()
 
 		//result(.failure(NSError(domain: "server.api.missingimplementation", code: 0, userInfo: nil)))
+	}
+
+	func retrieveImage(_ url: URL, result: @escaping (Result<UIImage, NSError>) -> Void) {
+
+		get(url) { r in
+
+			switch r {
+				case .success(let data):
+					if let image = UIImage(data: data) {
+						result(.success(image))
+					} else {
+						result(.failure(NSError(domain: "server.profile.response.failedToDecodeImage", code: 0, userInfo: nil)))
+					}
+				break
+
+				case .failure(let error):
+					result(.failure(error))
+				break
+			}
+		}
+	}
+
+	//MARK: supporting methods
+
+	func get(_ url: URL, result: @escaping (Result<Data, NSError>) -> Void) {
+		urlSession.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+
+			if let error = error {
+				result(.failure(error as NSError))
+				return
+			}
+
+			guard let response = response else {
+				result(.failure(NSError(domain: "server.profile.response.empty", code: 0, userInfo: nil)))
+				return
+			}
+
+			guard let data = data else {
+				result(.failure(NSError(domain: "server.profile.response.emptydata", code: 0, userInfo: nil)))
+				return
+			}
+
+			if response is HTTPURLResponse {
+				let response: HTTPURLResponse = response as! HTTPURLResponse
+				//TODO: consider if support for other success response codes is needed (e.g. 203)
+				if response.statusCode != 200 {
+					result(.failure(NSError(domain: "server.profile.response.unexpectedHttpStatus", code: 0, userInfo: nil)))
+					return
+				}
+
+				result(.success(data))
+			}
+
+		}.resume()
+
 	}
 
 	//MARK: - URLSessionDelegate

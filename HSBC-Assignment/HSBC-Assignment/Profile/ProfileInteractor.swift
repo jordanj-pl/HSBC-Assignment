@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import UIKit //using UIKit all around the app is awful but for some reasons Apple decided that UIImage is a aprt of UIKit framework. Passing data is impracticible.
 
 struct BasicInfo {
     let firstName: String
 	let middleName: String?
 	let lastName: String
+	let photo: URL?
 	let email: String
 	let phone: String
 	let www: URL?
@@ -32,6 +34,7 @@ enum ProfileError: Error {
 protocol ProfileProviderProtocol: class {
 
 	func prepareProfile() -> Void
+	func retrievePhoto() -> Void
 
 	func getBasicInfo() throws -> BasicInfo
 	func getSummary() throws -> String
@@ -44,6 +47,7 @@ protocol ProfileOutputProtocol: class {
 	func backgroundActivityEnded() -> Void
 
 	func didPrepareProfile() -> Void
+	func didRetrievePhoto(photo: UIImage) -> Void
 	func didEncounterError() -> Void
 }
 
@@ -83,6 +87,24 @@ class ProfileInteractor: ProfileProviderProtocol {
 		}
 	}
 
+	func retrievePhoto() {
+		guard let photoUrl = currentProfile?.profilePhoto else {
+			return
+		}
+
+		self.serverAPI.retrieveImage(photoUrl) { result in
+			switch result {
+				case .success(let image):
+					self.output?.didRetrievePhoto(photo: image)
+				break
+
+				case .failure(let error):
+					//TODO: consider if error support is needed.
+				break
+			}
+		}
+	}
+
 	func getBasicInfo() throws -> BasicInfo {
 		guard let profile = currentProfile else {
 			throw ProfileError.empty
@@ -91,6 +113,7 @@ class ProfileInteractor: ProfileProviderProtocol {
 		return BasicInfo(firstName: profile.firstName,
 			middleName: profile.middleName,
 			lastName: profile.lastName,
+			photo: profile.profilePhoto,
 			email: profile.email,
 			phone: profile.phoneNumber,
 			www: profile.website

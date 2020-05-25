@@ -25,7 +25,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lq-dH-eMU">
                                                 <rect key="frame" x="20" y="20" width="374" height="200"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-Fe-BBm">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_unavailable" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-Fe-BBm">
                                                         <rect key="frame" x="0.0" y="48" width="140" height="152"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="140" id="sQS-VC-6nA"/>
@@ -182,6 +182,7 @@
                         <outlet property="experienceView" destination="Uz9-AS-jtq" id="suZ-4t-O6q"/>
                         <outlet property="nameLabel" destination="Ktd-XR-tBJ" id="XA0-zE-sms"/>
                         <outlet property="phoneLabel" destination="ZzL-cI-76v" id="82C-Vv-3dV"/>
+                        <outlet property="photoView" destination="LMe-Fe-BBm" id="bTg-pU-DIF"/>
                         <outlet property="summaryLabel" destination="VxH-J9-s6P" id="CTN-Dv-tKm"/>
                         <outlet property="wwwLabel" destination="5wl-Gj-lO9" id="IAd-Y2-KWt"/>
                     </connections>
@@ -215,5 +216,6 @@
         <image name="envelope" catalog="system" width="128" height="93"/>
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="phone" catalog="system" width="128" height="115"/>
+        <image name="photo_unavailable" width="225" height="224"/>
     </resources>
 </document>

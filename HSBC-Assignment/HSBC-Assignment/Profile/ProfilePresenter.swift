@@ -32,6 +32,7 @@ protocol ProfileViewProtocol: class {
 	func hideActivityIndicator() -> Void
 
 	func setName(_ name: String) -> Void
+	func setPhoto(_ photo: UIImage) -> Void
 	func setEmail(_ email: String) -> Void
 	func setPhone(_ phone: String) -> Void
 	func setWWW(_ www: String) -> Void
@@ -64,6 +65,12 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 			view?.setWWW(www)
 		} else {
 			//TODO: hide WWW field
+		}
+
+		if info.photo != nil {
+			provider?.retrievePhoto()
+		} else {
+			view?.setPhoto(UIImage(named: "photo_unavailable")!)
 		}
 
 	}
@@ -179,6 +186,12 @@ class ProfilePresenter: ProfileEventHandlerProtocol, ProfileOutputProtocol {
 			//TODO: handle error
 		} catch {
 			//TODO: handle unexpected error
+		}
+	}
+
+	func didRetrievePhoto(photo: UIImage) {
+		DispatchQueue.main.async {
+			self.view?.setPhoto(photo)
 		}
 	}
 

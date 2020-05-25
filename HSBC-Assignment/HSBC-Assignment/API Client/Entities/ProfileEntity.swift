@@ -13,6 +13,7 @@ struct ProfileEntity: Decodable {
 	var firstName: String
 	var middleName: String?
 	var lastName: String
+	var profilePhoto: URL?
 
 	var phoneNumber: String
 	var email: String

@@ -14,6 +14,7 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	@IBOutlet var basicInfoView: UIView!
 	@IBOutlet var nameLabel: UILabel!
+	@IBOutlet var photoView: UIImageView!
 	@IBOutlet var emailLabel: UILabel!
 	@IBOutlet var phoneLabel: UILabel!
 	@IBOutlet var wwwLabel: UILabel!
@@ -56,6 +57,10 @@ class ProfileView: UIViewController, ProfileViewProtocol {
 
 	func setName(_ name: String) {
 		nameLabel.text = name
+	}
+
+	func setPhoto(_ photo: UIImage) {
+		photoView.image = photo
 	}
 
 	func setEmail(_ email: String) {
