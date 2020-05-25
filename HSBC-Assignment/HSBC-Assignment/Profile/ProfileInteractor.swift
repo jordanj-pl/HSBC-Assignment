@@ -57,10 +57,12 @@ class ProfileInteractor: ProfileProviderProtocol {
 
 	unowned var serverAPI: APICLientProtocol
 
+	var currentProfileURL: URL
 	var currentProfile: ProfileEntity?
 
 	required init(apiClient: APICLientProtocol) {
 		serverAPI = apiClient
+		currentProfileURL = Constants.profileURL
 	}
 
 	//MARK: - ProfileProviderProtocol
@@ -68,7 +70,7 @@ class ProfileInteractor: ProfileProviderProtocol {
 	func prepareProfile() {
 		self.output?.backgroundActivityStarted()
 
-		self.serverAPI.retrieveProfile(Constants.profileURL) { [unowned self] result in
+		self.serverAPI.retrieveProfile(currentProfileURL) { [unowned self] result in
 
 			self.output?.backgroundActivityEnded()
 

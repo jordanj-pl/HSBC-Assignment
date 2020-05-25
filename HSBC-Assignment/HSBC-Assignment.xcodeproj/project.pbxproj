@@ -28,6 +28,9 @@
 		173CE8382475F60E00C6F964 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173CE8372475F60E00C6F964 /* ActivityIndicator.swift */; };
 		17CCD813247B0C5100042FE9 /* ExperienceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17CCD812247B0C5100042FE9 /* ExperienceView.xib */; };
 		17CCD815247B0D8C00042FE9 /* ExperienceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CCD814247B0D8C00042FE9 /* ExperienceView.swift */; };
+		17CCD819247C86D500042FE9 /* ProfileInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CCD818247C86D500042FE9 /* ProfileInteractorTests.swift */; };
+		17CCD81C247C88B000042FE9 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CCD81B247C88B000042FE9 /* APIClientMock.swift */; };
+		17CCD820247C8DCE00042FE9 /* ProfileOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CCD81F247C8DCE00042FE9 /* ProfileOutputMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		173CE8372475F60E00C6F964 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		17CCD812247B0C5100042FE9 /* ExperienceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExperienceView.xib; sourceTree = "<group>"; };
 		17CCD814247B0D8C00042FE9 /* ExperienceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperienceView.swift; sourceTree = "<group>"; };
+		17CCD818247C86D500042FE9 /* ProfileInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractorTests.swift; sourceTree = "<group>"; };
+		17CCD81B247C88B000042FE9 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
+		17CCD81F247C8DCE00042FE9 /* ProfileOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileOutputMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 		170E7132247333DC0035E4B8 /* HSBC-AssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
+				17CCD816247C86A800042FE9 /* Profile */,
 				170E7133247333DC0035E4B8 /* HSBC_AssignmentTests.swift */,
 				170E7135247333DC0035E4B8 /* Info.plist */,
 			);
@@ -199,6 +206,32 @@
 				173CE8372475F60E00C6F964 /* ActivityIndicator.swift */,
 			);
 			path = "UI Elements";
+			sourceTree = "<group>";
+		};
+		17CCD816247C86A800042FE9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				17CCD817247C86B600042FE9 /* Interactor */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		17CCD817247C86B600042FE9 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				17CCD81A247C886700042FE9 /* Mocks */,
+				17CCD818247C86D500042FE9 /* ProfileInteractorTests.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		17CCD81A247C886700042FE9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				17CCD81B247C88B000042FE9 /* APIClientMock.swift */,
+				17CCD81F247C8DCE00042FE9 /* ProfileOutputMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17CCD81C247C88B000042FE9 /* APIClientMock.swift in Sources */,
+				17CCD819247C86D500042FE9 /* ProfileInteractorTests.swift in Sources */,
+				17CCD820247C8DCE00042FE9 /* ProfileOutputMock.swift in Sources */,
 				170E7134247333DC0035E4B8 /* HSBC_AssignmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
