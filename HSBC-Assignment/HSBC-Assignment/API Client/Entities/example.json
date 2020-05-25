@@ -21,6 +21,34 @@
 			"dateStarted": "2015-11-01T00:00:00Z",
 			"dateEnded": "2017-03-31T23:59:59Z",
 			"summary": "Development of framework used to display ads within tvOS applications. Technologies: Objective-c, C, Swift, REST Api, AVFramework etc."
+		},
+		{
+			"companyName": "Luxoft Poland sp. z o.o.",
+			"position": "Tech Lead",
+			"dateStarted": "2015-06-01T00:00:00Z",
+			"dateEnded": "2015-10-31T23:59:59Z",
+			"summary": "Responsibility: providing high level strategy and architecture guidance across the portfolio of enterprise applications and capabilities, writing architectural documentation, serving as primary interface to US based architecture and project management teams."
+		},
+		{
+			"companyName": "Seamless Medical Systems Inc.",
+			"position": "senior iOS developer and team lead",
+			"dateStarted": "2012-06-01T00:00:00Z",
+			"dateEnded": "2015-05-31T23:59:59Z",
+			"summary": "As senior iOS developer and team lead I was responsible for development of application which is a part of larger system whose primary goal is to replace paper forms used in practices and hospitals throughout US with electronic registration system based on tablets (iPads). My responsibility was not only to develop source code but also to verify work of younger employees, merge their code into master branch of repository, maintaining documentation and establishing company standards for data exchange between mobile application and server."
+		},
+		{
+			"companyName": "One-2-One S.A.",
+			"position": "team coordinator, mobile applications specialist",
+			"dateStarted": "2011-04-01T00:00:00Z",
+			"dateEnded": "2012-05-31T23:59:59Z",
+			"summary": "The most important project available to public was tvp.pl which provides TVP content for mobile devices. I coordinated a team of developers who created the platform i.e. server side scripts and Android app and made an iOS app solely. Another projects include in-house distribution of Lilly's insulin presentation, objective-c engine and HTML content with CSS 3 and jQuery animations"
+		},
+		{
+			"companyName": "One-2-One S.A.",
+			"position": "Internet services developer, international team coordinator",
+			"dateStarted": "2008-08-15T00:00:00Z",
+			"dateEnded": "2011-03-31T23:59:59Z",
+			"summary": "Server side applications for value added services in mobile networks, premium SMS, IVR, etc. The services I created at that time were targeted at large companies mostly TVP S.A. and Eurozet sp. z o.o."
 		}
 	],
 	"languages": [],
